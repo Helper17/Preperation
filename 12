@@ -1,0 +1,62 @@
+# Queue: Using LinkedList as collection:
+# Implement a class Queue=()
+class LinkedList:
+    def __init__(self, data):
+        self.data = data
+        self.next = None
+
+class Queue:
+    def __init__(self):
+        self.queue = None
+
+    def enqueue(self, new_data):
+        newData = LinkedList(new_data)
+
+        newData.next = self.queue
+        self.queue = newData
+
+    def dequeue(self):
+        if self.is_empty():
+            print("Queue is empty")
+            return None
+
+        temp = self.queue
+
+        while temp.next.next is not None:
+            temp = temp.next
+
+        last_item = temp.next
+        temp.next = None
+        return last_item
+
+    def size(self):
+        count = 0
+        temp = self.queue
+
+        while temp is not None:
+            temp = temp.next
+            count += 1
+
+        return count
+
+    def is_empty(self):
+        return self.queue == None
+
+    def display(self):
+        temp = self.queue
+
+        while temp is not None:
+            print(temp.data)
+            temp = temp.next
+
+def main():
+    q = Queue()
+    q.enqueue(4)
+
+    q.enqueue('bam')
+    q.enqueue(True)
+
+    print(q.size())
+    print(Queue)
+
+main()
