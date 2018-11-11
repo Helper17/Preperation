@@ -1,0 +1,49 @@
+# not working
+# Stack: Using LinkedList as collection:
+# Implement a class Stack=(push,pop,is_empty,get_top,default constructor,print - prints the contents
+
+
+class LinkedList:
+    def __init__(self, data = None):
+        self.data = data
+        self.next = None
+
+class Stack:
+    def __init__(self):
+        self.head = None
+        self.stack = []
+
+    def setHead(self, newdata):
+        self.head = linkedList(newdata)
+
+    def isEmpty(self):
+        return self.stack == []
+
+    def push(self, newdata):
+        new_linkedList = linkedList(newdata)
+        new_linkedList.next = self.head
+        self.head = new_linkedList
+        self.stack.append(new_linkedList)
+
+
+    def pop(self):
+        if self.head is None:
+            print "no object"
+        else:
+            self.head = self.head.next
+            return self.stack.pop()
+
+    def get(self):
+        for i in self.stack:
+            print i.data
+
+
+def main():
+    llist = Stack()
+    llist.pop()
+    llist.get()
+    llist.push(1)
+    llist.push(2)
+    llist.push(3)
+
+main()
