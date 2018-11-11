@@ -1,6 +1,7 @@
 # Doubly linked list: Implement a Doubly Linked List to store collection of Book objects.
 # Book=(title, author, num-pages)(insert, remove, reverse)
 
+
 class Node:
     def __init__(self, data):
         self.data = data
@@ -36,39 +37,34 @@ class DoublyLinkedList:
         cur = self.head
         while cur:
             if cur.data == key and cur == self.head:
-                # Case 1:
+
                 if not cur.next:
-                    cur = None
+
                     self.head = None
                     return
 
-                # Case 2:
                 else:
-                    nxt = cur.next
+                    next1 = cur.next
                     cur.next = None
-                    nxt.prev = None
-                    cur = None
-                    self.head = nxt
+                    next1.prev = None
+                    self.head = next1
                     return
 
             elif cur.data == key:
-                # Case 3:
                 if cur.next:
-                    nxt = cur.next
+                    next1 = cur.next
                     prev = cur.prev
-                    prev.next = nxt
-                    nxt.prev = prev
+                    prev.next = next1
+                    next1.prev = prev
                     cur.next = None
                     cur.prev = None
-                    cur = None
                     return
 
-                # Case 4:
+
                 else:
                     prev = cur.prev
                     prev.next = None
                     cur.prev = None
-                    cur = None
                     return
             cur = cur.next
 
@@ -83,20 +79,27 @@ class DoublyLinkedList:
         if temp:
             self.head = temp.prev
 
+
 def main():
     dllist = DoublyLinkedList()
     # Book = ("title, author, num - pages")
-    dllist.append(1)
-    dllist.append("The ones who walk away from Omelas, Ursula Leguin, 30")
+    dllist.append("Into the magic shop, James Doty, 300")
+    dllist.append("The ones who walk away from Omelas, Ursula Leguin, 7")
     dllist.append("The Dispossesed, Ursula Leguin, 200")
-    dllist.append(4)
-
-    dllist.delete(1)
-
-    dllist.delete(4)
-
+    dllist.append("The final empire, Sanderson Brandon, 500")
+    dllist.append("Demian, Hermann Hesse, 150")
     dllist.print_list()
-    print("*"*20)
+    print("*" * 20)
+    print("item is deleted")
+    dllist.delete("The Dispossesed, Ursula Leguin, 200")
+    dllist.print_list()
+    print("*" * 20)
+
+    print("reverse of the list is this")
     dllist.reverse()
     dllist.print_list()
+
+    print("*" * 20)
+
+
 main()
