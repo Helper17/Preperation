@@ -1,21 +1,26 @@
 # Queue: Using Array as collection:
 # Implement a class Queue=()
 
+
 class Queue:
     def __init__(self):
         self.items = []
 
-    def isEmpty(self):
-        return self.items == []
+    def is_empty(self):
+        if len(self.items) == 0:
+            return self.items == []
+        else:
+            print("everything is ok")
 
     def enqueue(self, item):
-        self.items.insert(0,item)
+        self.items.insert(0, item)
 
     def dequeue(self):
         return self.items.pop()
 
     def size(self):
         return len(self.items)
+
 
 def main():
     q = Queue()
@@ -27,4 +32,6 @@ def main():
     print(q.size())
     print(Queue)
 
+
 main()
+
